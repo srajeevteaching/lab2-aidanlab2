@@ -14,28 +14,24 @@
 # specify net emmigration, use a negative number for migration.
 
 # inputs
-births = float(input("Enter births per second:"))
-deaths = float(input("Enter deaths per second:"))
-migration = float(input("Enter migration per second:"))
-years = float(input("Enter how many years into the future:"))
-population = float(input("Enter the population:"))
+births = .125
+deaths = .0833
+migration = .0357
+years = 5
+population = 326766748
+# births = float(input("Enter births per second:"))
+# deaths = float(input("Enter deaths per second:"))
+# migration = float(input("Enter migration per second:"))
+# years = float(input("Enter how many years into the future:"))
+# population = float(input("Enter the population:"))
 
-# time
-# minBirth = births / 60
-# hoursBirths = minBirth / 60
-# daysBirths = hoursBirths / 24
-# yearsBirths = daysBirths / 365.25
-# minDeaths = deaths / 60
-# hoursDeaths = minDeaths / 60
-# daysDeaths = hoursDeaths / 24
-# yearsDeaths = daysDeaths / 365.25
-# minMigration = migration / 60
-# hoursMigration = minMigration / 60
-# daysMigration = hoursMigration / 24
-# yearsMigration = daysMigration / 365.25
 # equations
-projectedPopulation = ((births - deaths - migration)*population) * years * 365 * 24 * 60 * 60 + population
+popRate = (births - deaths + migration)
+print(popRate)
+projectedPopulation = popRate * 31536000 * years + population
 
 # if
-# print
-print("Projected population is:", projectedPopulation)
+if projectedPopulation <= 0:
+    print("Projected population will die off.")
+elif projectedPopulation >= 0:
+    print("Projected population is:", projectedPopulation)
